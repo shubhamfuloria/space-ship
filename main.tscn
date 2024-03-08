@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjy6x60f2b5r"]
+
+[ext_resource type="PackedScene" uid="uid://f1cqksfqju15" path="res://Ship/player_ship.tscn" id="1_417x8"]
+[ext_resource type="Script" path="res://main.gd" id="1_ma8ow"]
+[ext_resource type="PackedScene" uid="uid://b6dcv2uag0uqb" path="res://Ship/rocket.tscn" id="2_161le"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_ma8ow")
+player_ship_rocket = ExtResource("2_161le")
+
+[node name="PlayerShip" parent="." instance=ExtResource("1_417x8")]
+
+[connection signal="shoot" from="PlayerShip" to="." method="_on_player_ship_shoot"]
