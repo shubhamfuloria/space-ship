@@ -1,13 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjy6x60f2b5r"]
+[gd_scene load_steps=7 format=3 uid="uid://bjy6x60f2b5r"]
 
 [ext_resource type="PackedScene" uid="uid://f1cqksfqju15" path="res://Ship/player_ship.tscn" id="1_417x8"]
 [ext_resource type="Script" path="res://main.gd" id="1_ma8ow"]
 [ext_resource type="PackedScene" uid="uid://b6dcv2uag0uqb" path="res://Ship/rocket.tscn" id="2_161le"]
+[ext_resource type="PackedScene" uid="uid://oykswhq4cyyg" path="res://Alien/alien.tscn" id="3_kqopl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bge6p"]
+size = Vector2(355, 30)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_api6b"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_ma8ow")
 player_ship_rocket = ExtResource("2_161le")
+alien_rocket = ExtResource("3_kqopl")
 
 [node name="PlayerShip" parent="." instance=ExtResource("1_417x8")]
+position = Vector2(67, 525)
+
+[node name="AlienTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(3, 580)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(175.5, 34)
+shape = SubResource("RectangleShape2D_bge6p")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(180.048, 37.1574)
+scale = Vector2(-359.095, 37.5599)
+texture = SubResource("CanvasTexture_api6b")
 
 [connection signal="shoot" from="PlayerShip" to="." method="_on_player_ship_shoot"]
+[connection signal="timeout" from="AlienTimer" to="." method="_on_alien_timer_timeout"]

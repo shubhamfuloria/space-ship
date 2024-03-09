@@ -2,6 +2,7 @@ extends Sprite2D
 
 @export var speed = 400
 @export var min_interval_sec_bw_fire = 0.2
+
 signal shoot
 
 
