@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6dcv2uag0uqb"]
+[gd_scene load_steps=5 format=3 uid="uid://b6dcv2uag0uqb"]
 
 [ext_resource type="Texture2D" uid="uid://brgaqcg6clhq8" path="res://Ship/assets/rocket.png" id="1_d0yok"]
 [ext_resource type="Script" path="res://Ship/rocket.gd" id="1_sdbtu"]
+[ext_resource type="AudioStream" uid="uid://q5uq07vx7cpb" path="res://Ship/assets/shoot.wav" id="3_8yucm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rpml1"]
 radius = 11.0
@@ -20,5 +21,8 @@ position = Vector2(1, 0)
 shape = SubResource("CapsuleShape2D_rpml1")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_8yucm")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

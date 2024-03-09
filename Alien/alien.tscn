@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://oykswhq4cyyg"]
+
+[ext_resource type="Texture2D" uid="uid://crn6bavudr8gg" path="res://Alien/assets/alien-ship-1.png" id="1_3x2aa"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6t1o3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_87h05"]
+size = Vector2(122, 62)
+
+[node name="Alien" type="RigidBody2D"]
+mass = 100.0
+physics_material_override = SubResource("PhysicsMaterial_6t1o3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -10)
+shape = SubResource("RectangleShape2D_87h05")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3x2aa")
